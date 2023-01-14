@@ -1,0 +1,17 @@
+SET RootPath=%~dp0
+SET Build=build
+SET Config=ReleaseWin32
+
+if not exist %Build% (
+    md %Build%
+)
+cd %Build%
+
+if not exist %Config% (
+    md %Config%
+)
+cd %Config%
+
+%RootPath%tools/cmake/bin/cmake.exe ../../ -G "Visual Studio 15 2017" -D CC_PLATFORM=Win32 -D CMAKE_BUILD_TYPE=RelWithDebInfo -D CMAKE_CONFIGURATION_TYPES=RelWithDebInfo -D CMAKE_SKIP_BUILD_ALL_DEPENDENCY=1 -D CMAKE_USE_RELATIVE_PATHS=1 -D "CMAKE_C_FLAGS:STRING=-DUNICODE -D_UNICODE -D_CRT_SECURE_NO_DEPRECATE /W3 /EHsc /Zc:wchar_t- -DWIN32 -D_WIN32 /wd4996 /wd4131 /wd4244 /wd4127 /MP -D_WINDOWS -D_CRT_NOFORCE_MANIFEST -D_STL_NOFORCE_MANIFEST"   -D "CMAKE_CXX_FLAGS:STRING=-DUNICODE -D_UNICODE -D_CRT_SECURE_NO_DEPRECATE /W3 /EHsc /Zc:wchar_t- -DWIN32 -D_WIN32 /wd4996 /wd4131 /wd4244 /wd4127 /MP -D_WINDOWS -D_CRT_NOFORCE_MANIFEST -D_STL_NOFORCE_MANIFEST" -D WIN32=1  -D MSVC=1
+
+
