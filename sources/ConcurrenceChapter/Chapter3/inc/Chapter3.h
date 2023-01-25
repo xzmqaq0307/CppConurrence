@@ -1,7 +1,7 @@
-#ifndef CHAPTER_2_H
-#define CHAPTER_2_H
+#ifndef CHAPTER_3_H
+#define CHAPTER_3_H
 
-#if defined(CHAPTER_2_LIB)
+#if defined(CHAPTER_3_LIB)
 #define CHAPTER_EXPORT_ENTER extern "C" __declspec(dllexport)
 #else
 #define CHAPTER_EXPORT_ENTER extern "C" __declspec(dllimport)

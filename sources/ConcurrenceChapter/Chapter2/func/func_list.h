@@ -1,7 +1,9 @@
 #ifndef FUNC_LIST_H
 #define FUNC_LIST_H
 #include <iostream>
+#include <thread>
 
+#pragma region struction
 class BackgroundTask
 {
 public:
@@ -41,4 +43,29 @@ struct Func
 		}
 	}
 };
+
+class ThreadGuard
+{
+	std::thread& t;
+public:
+	// 1. avoid implicit conversion
+	explicit ThreadGuard(std::thread& t_) : t(t_){}
+	// 2. 
+	~ThreadGuard()
+	{
+		if (t.joinable())
+		{ 
+			t.join();
+		}
+	}
+	ThreadGuard(ThreadGuard const&) = delete;
+	ThreadGuard& operator=(ThreadGuard const&) = delete;
+};
+#pragma endregion
+#pragma region func
+
+void f(int i, std::string const& s);
+
+#pragma endregion
+
 #endif
