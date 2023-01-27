@@ -47,14 +47,17 @@ void CcCallChapter(std::string chapter, std::string func, std::string data)
 			std::cout << word << ": Means you dll function lacks of extern C" << std::endl;
 		}
 		
-		try
+		else
 		{
-			fn_Chapter(data.c_str(), result);
-			std::cout << result << std::endl;
-		}
-		catch (const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
+			try
+			{
+				fn_Chapter(data.c_str(), result);
+				std::cout << result << std::endl;
+			}
+			catch (const std::exception& e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 		}
 
 		FreeLibrary(module);
@@ -86,8 +89,11 @@ std::string CcBuildParam(int cnt, ...)
 int main()
 {
 #pragma region chapter_1
-	CcCallChapter("Chapter1", "CcChapter1HelloWorld", "");
+	// CcCallChapter("Chapter1", "CcChapter1HelloWorld", "");
+#pragma endregion
 
+#pragma region practice
+	CcCallChapter("Practice", "CcPracticeRecordAndPlay", "");
 #pragma endregion
 
 	return 0;
